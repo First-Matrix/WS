@@ -52,7 +52,7 @@
                     <td><%= produit.getId() %></td>
                     <td><%= produit.getNom() %></td>
                     <td><%= produit.getStock() %></td>
-                    <td><%= produit.getPrix() %> €</td>
+                    <td><%= produit.getPrix() %> mru</td>
                     <td>
                         <% if (produit.getStock() > 0) { %>
                             <form action="<%= request.getContextPath() %>/order" method="post">

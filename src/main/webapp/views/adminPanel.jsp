@@ -27,7 +27,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/styles.css">
+
+    <style>
+        /* 🔹 Style Global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* 🔹 Titres */
+        h1, h2, h3 {
+            text-align: center;
+            color: #444;
+        }
+
+        /* 🔹 Liens */
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* 🔹 Tableaux */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* 🔹 Boutons */
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 🔹 Formulaires */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* 🔹 Messages d'erreur et de succès */
+        .error {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -36,15 +129,15 @@
 
     <!-- Affichage des messages d'erreur ou de succès -->
     <% if (errorMessage != null) { %>
-        <p class="error" style="color: red;">Erreur : <%= errorMessage %></p>
+        <p class="error">Erreur : <%= errorMessage %></p>
     <% } %>
     <% if (successMessage != null) { %>
-        <p class="success" style="color: green;">Succès : <%= successMessage %></p>
+        <p class="success">Succès : <%= successMessage %></p>
     <% } %>
 
     <!-- Gestion des utilisateurs -->
     <h2>Gestion des Utilisateurs</h2>
-    <table border="1">
+    <table>
         <tr>
             <th>Nom d'utilisateur</th>
             <th>Rôle</th>
@@ -92,7 +185,7 @@
 
     <!-- Gestion des Produits -->
     <h2>Gestion des Produits</h2>
-    <table border="1">
+    <table>
         <tr>
             <th>ID</th>
             <th>Nom</th>
