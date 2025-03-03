@@ -5,7 +5,7 @@
                              https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
 
-    <display-name>MonProjetWeb</display-name>
+    <display-name>WS</display-name>
 
     <welcome-file-list>
         <welcome-file>views/login.jsp</welcome-file>
