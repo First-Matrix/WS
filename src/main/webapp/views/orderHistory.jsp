@@ -23,7 +23,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Historique des commandes</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/styles.css">
+
+    <style>
+        /* 🔹 Style Global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* 🔹 Titres */
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+
+        /* 🔹 Liens */
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* 🔹 Tableaux */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* 🔹 Messages d'erreur et de succès */
+        .error {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -32,13 +93,13 @@
 
     <%-- Affichage des messages d'erreur ou de succès --%>
     <% if (error != null) { %>
-        <p style="color: red;"><%= error %></p>
+        <p class="error"><%= error %></p>
     <% } %>
     <% if (success != null) { %>
-        <p style="color: green;"><%= success %></p>
+        <p class="success"><%= success %></p>
     <% } %>
 
-    <table border="1">
+    <table>
         <tr>
             <th>ID du produit</th>
             <th>Quantité</th>
