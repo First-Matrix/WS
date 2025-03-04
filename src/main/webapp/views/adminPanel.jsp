@@ -168,23 +168,66 @@
         <% } %>
     </table>
 
+    <h3>Ajouter un utilisateur</h3>
+    <form action="<%= request.getContextPath() %>/user" method="post">
+        <label>Nom :</label>
+        <input type="text" name="username" required>
+        <label>Mot de passe :</label>
+        <input type="password" name="password" required>
+        <label>Rôle :</label>
+        <select name="role">
+            <option value="admin">Admin</option>
+            <option value="gestionnaire">Gestionnaire</option>
+            <option value="client">Client</option>
+        </select>
+        <button type="submit" name="action" value="addUser">Ajouter</button>
+    </form>
+
+    <!-- Gestion des Produits -->
+    <h2>Gestion des Produits</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Stock</th>
+            <th>Prix</th>
+            <th>Actions</th>
+        </tr>
+        <% if (produits != null && !produits.isEmpty()) {
+            for (Produit produit : produits) { %>
+                <tr>
+                    <td><%= produit.getId() %></td>
+                    <td><%= produit.getNom() %></td>
+                    <td><%= produit.getStock() %></td>
+                    <td><%= produit.getPrix() %> mru</td>
+                    <td>
+                        <form action="<%= request.getContextPath() %>/product" method="post">
+                            <input type="hidden" name="id" value="<%= produit.getId() %>">
+                            <input type="hidden" name="action" value="deleteProduct">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+        <% }
+        } else { %>
+            <tr>
+                <td colspan="5">Aucun produit trouvé.</td>
+            </tr>
+        <% } %>
+    </table>
+
     <h3>Ajouter un Produit</h3>
     <form action="<%= request.getContextPath() %>/product" method="post">
         <label>ID :</label>
-        <input type="number" name="id" min="1" required> <!-- Empêche ID négatif -->
-
+        <input type="number" name="id" required>
         <label>Nom :</label>
         <input type="text" name="nom" required>
-
         <label>Description :</label>
         <input type="text" name="description" required>
-
         <label>Stock :</label>
-        <input type="number" name="stock" min="0" required> <!-- Empêche stock négatif -->
-
+        <input type="number" name="stock" required>
         <label>Prix :</label>
-        <input type="number" name="prix" step="0.01" min="0" required> <!-- Empêche prix négatif -->
-
+        <input type="number" name="prix" step="0.01" required>
         <button type="submit" name="action" value="addProduct">Ajouter</button>
     </form>
 
