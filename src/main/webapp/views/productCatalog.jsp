@@ -9,7 +9,7 @@
         return;
     }
 
-    // Récupération des produits depuis le service (Correction ici)
+    // Récupération des produits depuis le service
     ProductService productService = new ProductService();
     List<Produit> produits = productService.getAllProducts();
 
@@ -23,7 +23,101 @@
 <head>
     <meta charset="UTF-8">
     <title>Catalogue des Produits</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/styles.css">
+
+    <style>
+        /* 🔹 Style Global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* 🔹 Titres */
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+
+        /* 🔹 Liens */
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* 🔹 Tableaux */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* 🔹 Boutons */
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 🔹 Formulaires */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+            margin: auto;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        /* 🔹 Messages d'erreur et de succès */
+        .error {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -32,13 +126,13 @@
 
     <%-- Affichage des messages d'erreur ou de succès --%>
     <% if (error != null) { %>
-        <p style="color: red;"><%= error %></p>
+        <p class="error"><%= error %></p>
     <% } %>
     <% if (success != null) { %>
-        <p style="color: green;"><%= success %></p>
+        <p class="success"><%= success %></p>
     <% } %>
 
-    <table border="1">
+    <table>
         <tr>
             <th>ID</th>
             <th>Nom</th>
@@ -52,7 +146,7 @@
                     <td><%= produit.getId() %></td>
                     <td><%= produit.getNom() %></td>
                     <td><%= produit.getStock() %></td>
-                    <td><%= produit.getPrix() %> mru</td>
+                    <td><%= produit.getPrix() %> MRU</td>
                     <td>
                         <% if (produit.getStock() > 0) { %>
                             <form action="<%= request.getContextPath() %>/order" method="post">
@@ -76,4 +170,3 @@
 
 </body>
 </html>
-
