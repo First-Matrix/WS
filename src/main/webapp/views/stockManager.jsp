@@ -22,7 +22,101 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestion du Stock</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/styles.css">
+
+    <style>
+        /* 🔹 Style Global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* 🔹 Titres */
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+
+        /* 🔹 Liens */
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* 🔹 Tableaux */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* 🔹 Formulaires */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+            margin: auto;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        /* 🔹 Boutons */
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 🔹 Messages d'erreur et de succès */
+        .error {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
     <h1>Gestionnaire de Stock</h1>
@@ -31,7 +125,7 @@
     <!-- Affichage des erreurs et succès -->
     <% String error = request.getParameter("error"); %>
     <% if (error != null) { %>
-        <p style="color: red;">
+        <p class="error">
             <% if ("product_not_found".equals(error)) { %>Produit introuvable.<% } %>
             <% if ("invalid_input".equals(error)) { %>Données invalides.<% } %>
         </p>
@@ -39,14 +133,14 @@
 
     <% String success = request.getParameter("success"); %>
     <% if (success != null) { %>
-        <p style="color: green;">
+        <p class="success">
             <% if ("stock_updated".equals(success)) { %>Stock mis à jour avec succès !<% } %>
             <% if ("order_status_updated".equals(success)) { %>Statut de la commande mis à jour !<% } %>
         </p>
     <% } %>
 
     <h2>Mise à jour du stock</h2>
-    <table border="1">
+    <table>
         <tr>
             <th>ID</th>
             <th>Nom</th>
@@ -75,7 +169,7 @@
     </table>
 
     <h2>Commandes en cours</h2>
-    <table border="1">
+    <table>
         <tr>
             <th>ID Produit</th>
             <th>Quantité</th>
@@ -110,4 +204,3 @@
     </table>
 </body>
 </html>
-
