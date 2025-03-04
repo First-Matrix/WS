@@ -199,7 +199,7 @@
                     <td><%= produit.getId() %></td>
                     <td><%= produit.getNom() %></td>
                     <td><%= produit.getStock() %></td>
-                    <td><%= produit.getPrix() %> €</td>
+                    <td><%= produit.getPrix() %> mru</td>
                     <td>
                         <form action="<%= request.getContextPath() %>/product" method="post">
                             <input type="hidden" name="id" value="<%= produit.getId() %>">
